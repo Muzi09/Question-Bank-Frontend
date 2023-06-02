@@ -1,0 +1,39 @@
+@media screen and (min-width: 768px) {
+    #buttons {
+        width: 100%;
+        display: flex;
+        justify-content: right;
+        margin-right: 2em;
+        margin-left: 1em;
+    }
+    #signup {
+        margin-left: 1em;
+    }
+  }
+
+
+  @media screen and (max-width: 768px) {
+    #buttons {
+        margin-top: 1.5em;
+        margin-bottom: 1.5em;
+    }
+    #signup {
+        margin-top: 1em;
+        width: 50%;
+        align-self: center;
+    }
+    #login {
+        width: 50%;
+        align-self: center;
+    }
+    #navlinks {
+        font-size: large;
+        margin-left: 0.5em;
+        
+    } 
+  }
+
+
+  .dark {
+    background-color: red;
+  }

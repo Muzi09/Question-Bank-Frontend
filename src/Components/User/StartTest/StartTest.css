@@ -1,0 +1,46 @@
+@media screen and (max-width: 950px) {
+    #err {
+        font-size: small;
+    }
+    #btns {
+        margin-top: 2vh;
+        width: 50%;
+        align-self: center;
+
+    }
+    #btns-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+  }
+
+
+
+  @media screen and (min-width: 950px) {
+    #btns {
+        width: 20%;
+
+    }
+    #btns-container {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+  }
+
+
+
+  @media screen and (max-width: 523px) {
+      #customstart {
+        margin-top: 4%;
+    }
+      
+  }
+
+
+  .selected {
+    color: green;
+  }
+
+
