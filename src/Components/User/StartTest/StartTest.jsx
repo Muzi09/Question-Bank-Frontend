@@ -278,7 +278,7 @@ function StartTest() {
         <div>
             <TopNavbar />
 
-            <div style={{ overflow: "auto", boxSizing: "border-box", width: "80vw", backgroundColor: 'darkslategray', marginLeft: "10vw", marginTop: "5vh", borderRadius: "1em" }}>
+            <div style={{ overflow: "auto", boxSizing: "border-box", width: "90vw", backgroundColor: 'darkslategray', marginLeft: "5vw", marginTop: "5vh", borderRadius: "1em" }}>
 
 
                 {showSetup &&
@@ -295,14 +295,14 @@ function StartTest() {
 
                         <div>
                             <label style={{ marginTop: "2vh", marginLeft: "1.5vw", color: "lightgray" }} htmlFor="num">Set number of MCQ's -</label>
-                            <input min="1" placeholder='10 MCQs' onChange={(e) => { handleSetNum(e) }} id='num' style={{ marginLeft: "1vw", height: "4vh", width: "20vw", padding: "0.2em" }} type="number" />
+                            <input min="1" placeholder='10 MCQs' onChange={(e) => { handleSetNum(e) }} id='num' style={{ marginLeft: "1vw", height: "3.3vh", width: "20vw", padding: "0.5vmax" }} type="number" />
 
                         </div>
 
 
                         <div>
                             <label style={{ marginTop: "2vh", marginLeft: "1.5vw", color: "lightgray" }} htmlFor="timer">Set Timer (in minutes) - </label>
-                            <input placeholder='10 Min' onChange={(e) => { handleSetTimer(e) }} id='timer' style={{ marginLeft: "1vw", height: "4vh", width: "20vw", padding: "0.2em" }} type="number" />
+                            <input placeholder='10 Min' onChange={(e) => { handleSetTimer(e) }} id='timer' style={{ marginLeft: "1vw", height: "3.3vh", width: "20vw", padding: "0.5vmax" }} type="number" />
 
                         </div>
 

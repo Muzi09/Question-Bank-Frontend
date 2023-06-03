@@ -88,7 +88,7 @@ function Signup() {
   return (
     <div>
 
-      <div style={{ overflow: "auto", boxSizing: "border-box", width: "80vw", backgroundColor: 'darkslategray', marginLeft: "10vw", marginTop: "6vh", borderRadius: "1em" }}>
+      <div style={{ overflow: "auto", boxSizing: "border-box", width: "90vw", backgroundColor: 'darkslategray', marginLeft: "5vw", marginTop: "6vh", borderRadius: "1em" }}>
 
         <div style={{ display: 'flex', flexDirection: "column", alignItems: "center" }}>
 
