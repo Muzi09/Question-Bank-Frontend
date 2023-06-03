@@ -71,13 +71,13 @@ function Contact() {
                 </div>
 
 
-                <div style={{ marginTop: "3vh", marginLeft: "1.4vw" }}>
+                <div style={{ marginTop: "1vh", marginLeft: "1.4vw" }}>
                     <img style={{ marginBottom: "1.5vh", width: "7vmin", height: "7vmin" }} src={gitlogo} id='git-hub' />
                     <a style={{ marginLeft: "1.1vh", fontSize: "larger", textDecoration: "none" }} className='btn-link' id='git-hub-link' href=" https://wa.me/8234971938?text=Hello" target='_blank'>Whatsapp</a>
 
                 </div>
 
-                <div style={{ marginTop: "3vh", marginLeft: "2vw" }}>
+                <div style={{ marginTop: "1vh", marginLeft: "2vw" }}>
                     <img style={{ marginBottom: "1.5vh", width: "6vmin", height: "5vmin" }} src={gmail} id='gmail' />
                     <a style={{ marginLeft: "2vh", fontSize: "larger", textDecoration: "none" }} className='btn-link' id='gmail-link' href='#' onClick={handleClick}>Gmail</a>
 
