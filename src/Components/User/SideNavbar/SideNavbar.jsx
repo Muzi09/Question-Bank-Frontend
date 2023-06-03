@@ -11,10 +11,9 @@ function Sidenavbar() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        axios.get('http://localhost:3001/user/subjects')
+        axios.get('https://question-bank-backend.onrender.com/user/subjects')
             .then((res) => {
                 setSubjects(res.data.data)
-                console.log(res.data.data)
             })
             .catch((err) => {
                 console.log(err)
@@ -23,7 +22,7 @@ function Sidenavbar() {
 
     useEffect(() => {
         if (subjectID) {
-            axios.get(`http://localhost:3001/user/subject/${subjectID}/sections`)
+            axios.get(`https://question-bank-backend.onrender.com/user/subject/${subjectID}/sections`)
                 .then((res) => {
                     setSections(res.data.data)
                 })
@@ -51,7 +50,7 @@ function Sidenavbar() {
                         key={subject._id}
                         onClick={() => handleSubjectButtonClick(subject._id)}
                         variant="dark"
-                        style={{border: "1px solid gray", marginTop: "2vh", marginLeft: "2vw", marginBottom: "1vh", fontSize: "3.5vmin" }}
+                        style={{border: "1px solid gray", marginTop: "2vh", marginLeft: "2vw", marginBottom: "1vh", fontSize: "3.2vmin" }}
                     >
                         {subject.subjectName}
                     </Button>
@@ -83,7 +82,7 @@ function Sidenavbar() {
                                     <Button 
                                         className='bg-dark'
                                         onClick={() => handleOpenSection(section._id)}
-                                        style={{border: "1px solid gray", textAlign: "left", fontSize: "3vmin" }}
+                                        style={{border: "1px solid gray", textAlign: "left", fontSize: "2.8vmin" }}
                                     >
                                         {section.sectionName}
                                     </Button>

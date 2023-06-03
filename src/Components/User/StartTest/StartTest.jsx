@@ -6,6 +6,8 @@ import { Button } from 'react-bootstrap';
 import '../StartTest/StartTest.css'
 
 
+
+
 function StartTest() {
 
     const [fetchedQuestions, setFetchedQuestions] = useState([])
@@ -76,19 +78,20 @@ function StartTest() {
 
 
 
-    
-    
-    
+
+
+
     useEffect(() => {
-        axios.get(`http://localhost:3001/admin/sectionName/${searchParams.get('sectionID')}`)
-            .then((res) => { 
-                setSectionName(res.data.data.sectionName)})
+        axios.get(`https://question-bank-backend.onrender.com/admin/sectionName/${searchParams.get('sectionID')}`)
+            .then((res) => {
+                setSectionName(res.data.data.sectionName)
+            })
             .catch((err) => { console.log(err.message) })
     }, [resetCount])
 
 
     useEffect(() => {
-        axios.get(`http://localhost:3001/user/subject/${searchParams.get('subjectID')}/section/${searchParams.get('sectionID')}/questions`)
+        axios.get(`https://question-bank-backend.onrender.com/user/subject/${searchParams.get('subjectID')}/section/${searchParams.get('sectionID')}/questions`)
             .then((res) => {
 
                 function shuffleArray(array) {
@@ -167,22 +170,22 @@ function StartTest() {
         const currentQuestion = updatedQuestions[questionIndex];
 
         if (currentQuestion.selectedOption === option) {
-          currentQuestion.selectedOption = null;
+            currentQuestion.selectedOption = null;
         } else {
-          currentQuestion.selectedOption = option;
+            currentQuestion.selectedOption = option;
         }
-      
+
         setFetchedQuestions(updatedQuestions);
-      
+
         const count = updatedQuestions.reduce((acc, question) => {
-          if (question.answer === question.selectedOption) {
-            return acc + 1;
-          }
-          return acc;
+            if (question.answer === question.selectedOption) {
+                return acc + 1;
+            }
+            return acc;
         }, 0);
-      
+
         setCount(count);
-      }
+    }
 
 
 
@@ -279,8 +282,8 @@ function StartTest() {
 
 
                 {showSetup &&
-                    <div style={{fontSize: "3vmin"}}>
-                        <h3 style={{fontSize: "4vmin", color: "whitesmoke", paddingLeft: "1.5vw", paddingTop: "2vh" }}>{sectionName}</h3>
+                    <div style={{ fontSize: "3vmin" }}>
+                        <h3 style={{ fontSize: "4vmin", color: "whitesmoke", paddingLeft: "1.5vw", paddingTop: "2vh" }}>{sectionName}</h3>
 
                         <div style={{ color: "whitesmoke", paddingLeft: "1.5vw" }}>Available MCQ's in this Unit - <span>{questionsCount}</span></div>
 
@@ -288,7 +291,7 @@ function StartTest() {
                             <div id='err' style={{ marginLeft: '1.5vw', width: "80vw", position: "fixed", color: "orange" }}>{errorMessage}</div>
                         }
 
-                        <h5 style={{fontSize: "vmin", marginLeft: "1.5vw", marginTop: "7vh", color: "lightgray" }} >Custom set up for the test</h5>
+                        <h5 style={{ fontSize: "vmin", marginLeft: "1.5vw", marginTop: "7vh", color: "lightgray" }} >Custom set up for the test</h5>
 
                         <div>
                             <label style={{ marginTop: "2vh", marginLeft: "1.5vw", color: "lightgray" }} htmlFor="num">Set number of MCQ's -</label>
@@ -304,8 +307,8 @@ function StartTest() {
                         </div>
 
                         <div id="btn-cont" style={{ marginBottom: "5vh", marginTop: "8%", display: 'flex', justifyContent: "center", flexWrap: "wrap" }}>
-                            <Button onClick={handleQuickStart} className='btn-lg' style={{fontSize: "4vmin", marginRight: "5%" }}>Quick Start</Button>
-                            <Button style={{fontSize: "4vmin"}} id="customstart" onClick={handleCustomStart} className='btn-secondary btn-lg'>Start with Custom Settings</Button>
+                            <Button onClick={handleQuickStart} className='btn-lg' style={{ fontSize: "3.3vmin", marginRight: "5%" }}>Quick Start</Button>
+                            <Button style={{ fontSize: "3.3vmin" }} id="customstart" onClick={handleCustomStart} className='btn-secondary btn-lg'>Start with Custom Settings</Button>
 
                         </div>
 
@@ -317,44 +320,44 @@ function StartTest() {
 
 
 
-                {showAnswer && 
+                {showAnswer &&
                     <div>
-                    {fetchedQuestions &&
+                        {fetchedQuestions &&
 
-                        <div style={{ margin: "2%" }}>
+                            <div style={{ margin: "2%" }}>
 
-                            <h4 style={{ display: "inline", color: "silver" }}>Question number {questionNumber} of {numOfMCQ}</h4>
+                                <h4 style={{ display: "inline", color: "silver" }}>Question number {questionNumber} of {numOfMCQ}</h4>
 
-                            <p style={{fontSize: "3.5vmin", marginTop: "3vh", color: "white" }}>{fetchedQuestions[questionIndex].question}</p>
+                                <p style={{ fontSize: "3.5vmin", marginTop: "3vh", color: "white" }}>{fetchedQuestions[questionIndex].question}</p>
 
-                            {fetchedQuestions[questionIndex].options.map((option) => (
-                                <div key={option}>
-                                    <li style={{ listStyle: 'none' }}>
-                                        <Button
-                                            className={`btn-secondary ${option === fetchedQuestions[questionIndex].selectedOption ? 'btn-success' : ''}`}
-                                            style={{fontSize: "3vmin", textAlign: 'left', display: 'block', marginTop: '2vh' }}
-                                        >
-                                            {option}
-                                        </Button>
-                                    </li>
-                                </div>
-                            ))}
+                                {fetchedQuestions[questionIndex].options.map((option) => (
+                                    <div key={option}>
+                                        <li style={{ listStyle: 'none' }}>
+                                            <Button
+                                                className={`btn-secondary ${option === fetchedQuestions[questionIndex].selectedOption ? 'btn-success' : ''}`}
+                                                style={{ fontSize: "3vmin", textAlign: 'left', display: 'block', marginTop: '2vh' }}
+                                            >
+                                                {option}
+                                            </Button>
+                                        </li>
+                                    </div>
+                                ))}
 
-                            
 
-                            <Button style={{fontSize: "3vmin", backgroundColor: "lightgreen", color:"black", textAlign: 'left', display: 'block', marginTop: '5vh' }}>{fetchedQuestions[questionIndex].answer}</Button>
+
+                                <Button style={{ fontSize: "3vmin", backgroundColor: "lightgreen", color: "black", textAlign: 'left', display: 'block', marginTop: '5vh' }}>{fetchedQuestions[questionIndex].answer}</Button>
+
+                            </div>
+
+                        }
+                        <div id='btns-container' style={{ marginTop: "5vh", marginBottom: "5vh" }}>
+                            <Button id='btns' className='btn-sm' onClick={handlePrevQuestion}>Previous Question</Button>
+                            <Button id='btns' className='btn-sm' onClick={handleNextQuestion}>Next Question</Button>
+                            <Button id='btns' className='btn-sm btn-danger' onClick={handleBackToResult}>Back to Results</Button>
 
                         </div>
 
-                    }
-                    <div id='btns-container' style={{ marginTop: "5vh", marginBottom: "5vh" }}>
-                        <Button id='btns' className='btn-sm' onClick={handlePrevQuestion}>Previous Question</Button>
-                        <Button id='btns' className='btn-sm' onClick={handleNextQuestion}>Next Question</Button>
-                        <Button id='btns' className='btn-sm btn-danger' onClick={handleBackToResult}>Back to Results</Button>
-
                     </div>
-
-                </div>
                 }
 
 
@@ -366,19 +369,19 @@ function StartTest() {
                     <div style={{ color: 'white' }}>
                         <h1 style={{ color: 'silver', marginLeft: "2vw", marginTop: "1vh" }}>Results</h1>
 
-                        <h3 style={{fontSize: "3.5vmin", marginTop: "3vh", marginLeft: "2vw", color: "lightgreen" }}>{renderFeedback()}</h3>
+                        <h3 style={{ fontSize: "3.5vmin", marginTop: "3vh", marginLeft: "2vw", color: "lightgreen" }}>{renderFeedback()}</h3>
 
-                        <h3 style={{fontSize: "3.5vmin", marginLeft: "2vw", marginTop: "4vh" }}>Marks Obtained - {count} / {numOfMCQ}</h3>
+                        <h3 style={{ fontSize: "3.5vmin", marginLeft: "2vw", marginTop: "4vh" }}>Marks Obtained - {count} / {numOfMCQ}</h3>
 
-                        <h3 style={{fontSize: "3.5vmin", marginLeft: "2vw" }}>Accuracy - {Math.round(eval(count / numOfMCQ) * 100)}%</h3>
+                        <h3 style={{ fontSize: "3.5vmin", marginLeft: "2vw" }}>Accuracy - {Math.round(eval(count / numOfMCQ) * 100)}%</h3>
 
-                        <h3 style={{fontSize: "3.5vmin", marginLeft: "2vw" }}>
+                        <h3 style={{ fontSize: "3.5vmin", marginLeft: "2vw" }}>
                             Time Taken - {timer - minutes - 1} Min {60 - seconds} Sec
                         </h3>
 
                         <div style={{ display: "flex", justifyContent: "space-evenly", marginTop: "6vh", marginBottom: "5vh" }}>
-                            <Button style={{fontSize: "3vmin"}} className="btn-lg btn-danger" onClick={resetTest}>Retake Test</Button>
-                            <Button style={{fontSize: "3vmin"}} className="btn-lg btn-success" onClick={handleShowAnswers} >See Answers</Button>
+                            <Button style={{ fontSize: "3vmin" }} className="btn-lg btn-danger" onClick={resetTest}>Retake Test</Button>
+                            <Button style={{ fontSize: "3vmin" }} className="btn-lg btn-success" onClick={handleShowAnswers} >See Answers</Button>
 
                         </div>
                     </div>
@@ -418,19 +421,24 @@ function StartTest() {
                                     </div>
                                 ))}
 
-
                             </div>
 
                         }
-                        <div id='btns-container' style={{ marginTop: "4vh", marginBottom: "5vh" }}>
-                            <Button style={{fontSize: "3vmin"}} id='btns' className='btn-sm' onClick={handlePrevQuestion}>Previous Question</Button>
-                            <Button style={{fontSize: "3vmin"}} id='btns' className='btn-sm' onClick={handleNextQuestion}>Next Question</Button>
-                            <Button style={{fontSize: "3vmin"}} id='btns' className='btn-danger btn-sm' onClick={handleFinish} >Finish Test</Button>
+                        <div id='btns-container' style={{ marginTop: "4vh", marginBottom: "4vh" }}>
+                            <Button style={{ fontSize: "3vmin" }} id='btns' className='btn-sm' onClick={handlePrevQuestion}>Previous Question</Button>
+                            <Button style={{ fontSize: "3vmin" }} id='btns' className='btn-sm' onClick={handleNextQuestion}>Next Question</Button>
+                            <Button style={{ fontSize: "3vmin" }} id='btns' className='btn-danger btn-sm' onClick={handleFinish} >Finish Test</Button>
 
                         </div>
 
+
                     </div>
+                    
                 }
+
+                
+
+
 
             </div>
         </div>

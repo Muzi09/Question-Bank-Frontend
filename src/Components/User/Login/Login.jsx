@@ -33,7 +33,7 @@ function Login() {
     setMessage("")
 
 
-    axios.post('http://localhost:3001/user/login', {
+    axios.post('https://question-bank-backend.onrender.com/user/login', {
       email: email,
       password: password
     })
@@ -56,7 +56,7 @@ function Login() {
   return (
     <div>
 
-      <div style={{ overflow: "auto", boxSizing: "border-box", width: "66vw", backgroundColor: 'darkslategray', marginLeft: "17vw", marginTop: "6vh", borderRadius: "1em" }}>
+      <div style={{ overflow: "auto", boxSizing: "border-box", width: "80vw", backgroundColor: 'darkslategray', marginLeft: "10vw", marginTop: "6vh", borderRadius: "1em" }}>
 
         <div style={{ display: 'flex', flexDirection: "column", alignItems: "center" }}>
           <h1 style={{  marginTop: "3vh" }}>Logo</h1>

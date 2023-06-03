@@ -38,7 +38,7 @@ function Contact() {
     const handleFeedbackSubmit = () => {
         if (feedback) {
             setEmptyFeedback(false)
-            axios.post('http://localhost:3001/user/contact/feeback', { feedback: feedback })
+            axios.post('https://question-bank-backend.onrender.com/user/contact/feeback', { feedback: feedback })
                 .then((res) => {
                     setFeeback(res.data.data)
                     setShowSubmitted(true)

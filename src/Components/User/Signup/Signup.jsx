@@ -61,7 +61,7 @@ function Signup() {
     setMessage("")
 
 
-    axios.post('http://localhost:3001/user/signup', {
+    axios.post('https://question-bank-backend.onrender.com/user/signup', {
       name: name,
       email: email,
       password: password,
@@ -88,7 +88,7 @@ function Signup() {
   return (
     <div>
 
-      <div style={{ overflow: "auto", boxSizing: "border-box", width: "66vw", backgroundColor: 'darkslategray', marginLeft: "17vw", marginTop: "6vh", borderRadius: "1em" }}>
+      <div style={{ overflow: "auto", boxSizing: "border-box", width: "80vw", backgroundColor: 'darkslategray', marginLeft: "10vw", marginTop: "6vh", borderRadius: "1em" }}>
 
         <div style={{ display: 'flex', flexDirection: "column", alignItems: "center" }}>
 
@@ -111,16 +111,16 @@ function Signup() {
 
           <input onChange={(e) => { setConfirmPassword(e.target.value) }} placeholder='Re-enter password' type="password" style={{ width: "50vmin", fontSize: "3vmin", marginTop: "3vh"}} />
 
-          <Button onClick={handleSignup} className='btn-success' style={{fontSize: "3vmin", marginTop: "3vh" }}>Submit</Button>
+          <Button onClick={handleSignup} className='btn-success' style={{fontSize: "3vmin", marginTop: "3.5vh" }}>Submit</Button>
 
 
 
 
           <p style={{
-            color: "silver", marginTop: "1vh"
+            color: "silver", marginTop: "1.5vh",fontSize: "3vmin"
           }}>Already have an account <span style={{fontSize: "3vmin",  textDecoration: "none", color: "cyan", cursor: "pointer" }} className='btn-link' onClick={() => { navigate('/login') }} >Login Here</span> </p>
 
-          <Button onClick={() => {navigate("/")}} style={{fontSize: "3vmin", marginBottom: "2vh", marginTop: "2vh"}} className='btn-secondary'>Skip for now </Button>
+          <Button onClick={() => {navigate("/")}} style={{fontSize: "3vmin", marginBottom: "4vh", marginTop: "2vh"}} className='btn-secondary'>Skip for now </Button>
           
         </div>
 

@@ -22,14 +22,14 @@ function Sections() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/user/subject/${searchParams.get('subjectID')}/sections`)
+    axios.get(`https://question-bank-backend.onrender.com/user/subject/${searchParams.get('subjectID')}/sections`)
       .then((res) => { setSection(res.data.data) })
       .catch((err) => { console.log(err) })
   }, [])
 
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/admin/subjectName/${searchParams.get('subjectID')}`)
+    axios.get(`https://question-bank-backend.onrender.com/admin/subjectName/${searchParams.get('subjectID')}`)
     .then((res) => {setSubjectName(res.data.data.subjectName)})
     .catch((err) => {console.log(err.response.data.message)})
   }, [])
@@ -37,7 +37,7 @@ function Sections() {
   
   const handleCreateSection = () => {
     if (sectionName) {
-      axios.post('http://localhost:3001/admin/subject/section', { subjectID: subjectID, sectionName: sectionName })
+      axios.post('https://question-bank-backend.onrender.com/admin/subject/section', { subjectID: subjectID, sectionName: sectionName })
         .then((res) => {
           setSection([...section, res.data.data])
         })
@@ -51,7 +51,7 @@ function Sections() {
 
 
   const handleSectionDelete = (sectionID) => {
-    axios.delete(`http://localhost:3001/admin/subject/section/${sectionID}`)
+    axios.delete(`https://question-bank-backend.onrender.com/admin/subject/section/${sectionID}`)
       .then((res) => {
         const updatedSection = section.filter((item) => item._id !== sectionID);
         setSection(updatedSection);
@@ -100,7 +100,7 @@ function Sections() {
           return (
             <ul style={{ margin: "2vh" }} key={item._id}>
               <li style={{ listStyleType: "none" }}>
-                <button className='btn btn-primary btn-md-lg' onClick={() => { handleOpenSection(item._id) }}>{item.sectionName}</button>
+                <button style={{textAlign: "left"}} className='btn btn-primary btn-md-lg' onClick={() => { handleOpenSection(item._id) }}>{item.sectionName}</button>
                 {showDelete && <button className='btn btn-danger btn-sm' onClick={() => { handleSectionDelete(item._id) }}>Delete</button>}
               </li>
             </ul>

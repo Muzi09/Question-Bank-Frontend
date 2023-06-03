@@ -50,7 +50,7 @@ function Questions() {
   
   const uploadQuestions = (questions) => {
 
-    axios.post('http://localhost:3001/admin/subject/section/question', questions)
+    axios.post('https://question-bank-backend.onrender.com/admin/subject/section/question', questions)
       .then((res) => { console.log(res.data)})
       .catch((err) => { console.log(err.response.data.message)})
       setFetchedQuestions([...fetchedQuestions, ...questions]);
@@ -64,14 +64,14 @@ function Questions() {
   }
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/user/subject/${searchParams.get('subjectID')}/section/${searchParams.get('sectionID')}/questions`)
+    axios.get(`https://question-bank-backend.onrender.com/user/subject/${searchParams.get('subjectID')}/section/${searchParams.get('sectionID')}/questions`)
       .then((res) => { setFetchedQuestions(res.data.data) })
       .catch((err) => { console.log(err.response.data.message) })
   }, [])
 
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/admin/sectionName/${searchParams.get('sectionID')}`)
+    axios.get(`https://question-bank-backend.onrender.com/admin/sectionName/${searchParams.get('sectionID')}`)
     .then((res) => {setSectionName(res.data.data.sectionName)})
     .catch((err) => {console.log(err.response.data.message)})
   }, [])
@@ -85,7 +85,7 @@ function Questions() {
 
   const handleQuestionDelete = (questionId) => {
     console.log(questionId)
-    axios.delete(`http://localhost:3001/admin/subject/section/question/${questionId}`)
+    axios.delete(`https://question-bank-backend.onrender.com/admin/subject/section/question/${questionId}`)
       .then((res) => {
         const updatedQuestion = fetchedQuestions.filter((item) => item._id !== questionId);
         setFetchedQuestions(updatedQuestion);

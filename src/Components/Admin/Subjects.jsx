@@ -15,14 +15,14 @@ function Subjects() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        axios.get('http://localhost:3001/user/subjects')
+        axios.get('https://question-bank-backend.onrender.com/user/subjects')
             .then((res) => { setSubject(res.data.data) })
             .catch((err) => { console.log(err) })
     }, [])
 
 
     useEffect(() => {
-        axios.get('http://localhost:3001/user/feedback')
+        axios.get('https://question-bank-backend.onrender.com/user/feedback')
             .then((res) => { setFeedback(res.data.data) })
             .catch((err) => { console.log(err) })
     }, [])
@@ -30,7 +30,7 @@ function Subjects() {
 
     const handleCreatesubject = () => {
         if (subjectName) {
-            axios.post('http://localhost:3001/admin/subject', { subjectName: subjectName })
+            axios.post('https://question-bank-backend.onrender.com/admin/subject', { subjectName: subjectName })
                 .then((res) => {
                     setSubject([...subject, res.data.data])
                 })
@@ -44,7 +44,7 @@ function Subjects() {
 
 
     const handlesubjectDelete = (subjectID) => {
-        axios.delete(`http://localhost:3001/admin/subject/${subjectID}`)
+        axios.delete(`https://question-bank-backend.onrender.com/admin/subject/${subjectID}`)
             .then((res) => {
                 const updatedsubject = subject.filter((item) => item._id !== subjectID);
                 setSubject(updatedsubject);

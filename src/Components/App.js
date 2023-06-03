@@ -6,6 +6,7 @@ import '../Components/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
+
 import Subjects from './Admin/Subjects';
 import Sections from './Admin/Sections';
 import Questions from './Admin/Questions';
@@ -29,10 +30,6 @@ function App() {
   useEffect(() => {
     document.body.className = `theme-${theme}`;
   }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light');
-  };
 
   return (
     <div>
