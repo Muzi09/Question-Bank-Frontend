@@ -7,16 +7,19 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 
-import Subjects from './Admin/Subjects';
-import Sections from './Admin/Sections';
-import Questions from './Admin/Questions';
-import Login from './User/Login/Login';
-import Signup from './User/Signup/Signup';
-import Home from './User/Home/Home';
-import About from './User/About/About';
-import Services from './User/Services/Services';
-import Contact from './User/Contact/Contact';
-import StartTest from './User/StartTest/StartTest';
+import Subjects from './Admin/Subjects'
+import Sections from './Admin/Sections'
+import Questions from './Admin/Questions'
+import Login from './User/Login/Login'
+import Signup from './User/Signup/Signup'
+import Home from './User/Home/Home'
+import About from './User/About/About'
+import Services from './User/Services/Services'
+import Contact from './User/Contact/Contact'
+import StartTest from './User/StartTest/StartTest'
+
+import NotFound from './User/NotFound/NotFound';
+
 
 function App() {
   const [theme, setTheme] = useState('light');
@@ -35,6 +38,8 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
+          
+        <Route path="*" element={<NotFound />} />
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
