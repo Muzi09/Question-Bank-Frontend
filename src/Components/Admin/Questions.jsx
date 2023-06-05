@@ -129,17 +129,17 @@ function Questions() {
                 <div style={{margin: "1.5em"}}>
                   <ul key={item._id}>
 
-                    <li style={{ listStyleType: "none" }}><p>{item.question}</p></li>
+                    <li style={{ listStyleType: "none" }}><div>{item.question}</div></li>
 
-                    <li style={{ listStyleType: "none" }}><p>{item.options.map((option) => {
+                    <li style={{ listStyleType: "none" }}><div>{item.options.map((option) => {
                     return (
-                      <p>{option}</p>
+                      <div>{option}</div>
                     )
                   })}
-                  </p></li>
+                  </div></li>
 
 
-                  <li style={{ listStyleType: "none" }}><p>Answer: {item.answer}</p></li>
+                  <li style={{ listStyleType: "none" }}><div>Answer: {item.answer}</div></li>
 
 
                   </ul>
