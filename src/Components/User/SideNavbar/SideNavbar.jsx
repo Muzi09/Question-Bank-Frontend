@@ -1,9 +1,9 @@
-import axios from 'axios';
-import React, { useState, useEffect } from 'react';
-import { Button, Collapse } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import axios from 'axios'
+import React, { useState, useEffect } from 'react'
+import { Button, Collapse } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
 
-import { BeatLoader } from 'react-spinners';
+import { BeatLoader } from 'react-spinners'
 
 function Sidenavbar() {
     const [exploreQuestionToggle, setExploreQuestionToggle] = useState(false);
@@ -29,16 +29,16 @@ function Sidenavbar() {
 
     useEffect(() => {
         if (subjectID) {
-            setIsLoadingSections(true); // Set loading state for sections
+            setIsLoadingSections(true)
             axios
                 .get(`https://question-bank-backend.onrender.com/user/subject/${subjectID}/sections`)
                 .then((res) => {
-                    setSections(res.data.data);
-                    setIsLoadingSections(false); // Clear loading state for sections
+                    setSections(res.data.data)
+                    setIsLoadingSections(false)
                 })
                 .catch((err) => {
-                    console.log(err.response);
-                    setIsLoadingSections(false); // Clear loading state for sections in case of error
+                    console.log(err.response)
+                    setIsLoadingSections(false)
                 });
         }
     }, [subjectID]);
@@ -48,7 +48,7 @@ function Sidenavbar() {
     };
 
     const handleSubjectButtonClick = (subjectId) => {
-        setSubjectID(subjectId);
+        setSubjectID(subjectId)
         setExploreQuestionToggle(!exploreQuestionToggle);
     };
 
@@ -57,7 +57,7 @@ function Sidenavbar() {
             <div id="container" style={{ marginBottom: '4vh' }}>
                 {isLoadingSubjects ? (
                     <div className="d-flex justify-content-center mt-5">
-                    <BeatLoader style={{position: "absolute", left: "48vw", top: "40vh"}} color="#343a40" size={20} />
+                        <BeatLoader style={{ position: "absolute", left: "48vw", top: "40vh" }} color="#343a40" size={20} />
                     </div>
                 ) : (
                     <>
@@ -90,7 +90,7 @@ function Sidenavbar() {
                             >
                                 {isLoadingSections ? (
                                     <div className="d-flex justify-content-center">
-                                        <BeatLoader style={{position: "absolute", left: "48vw", top: "40vh"}} color="#343a40" size={20} />
+                                        <BeatLoader color="#343a40" size={10} />
                                     </div>
                                 ) : (
                                     <ul>
@@ -131,3 +131,4 @@ function Sidenavbar() {
 }
 
 export default Sidenavbar;
+
