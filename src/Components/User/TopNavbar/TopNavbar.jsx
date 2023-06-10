@@ -1,5 +1,5 @@
 import React from 'react'
-import { useLocation, Link } from 'react-router-dom'
+import { useLocation, Link, Navigate } from 'react-router-dom'
 import { Navbar, Nav, Button } from 'react-bootstrap'
 import '../TopNavbar/TopNavbar.css'
 import { useNavigate } from 'react-router-dom'
@@ -61,13 +61,13 @@ function TopNavbar() {
           </Nav>
 
           <Nav id="buttons">
-            <Link to="/login" variant="outline-light" className="mr-2" id="login">
+            <Button onClick={() => {navigate('/login')}} variant="outline-light" className="mr-2" id="login">
               Login
-            </Link>
+            </Button>
 
-            <Link to={"/signup"} variant="outline-light" id="signup">
+            <Button onClick={() => {navigate('/signup')}} variant="outline-light" id="signup">
               Sign Up
-            </Link>
+            </Button>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

@@ -12,20 +12,23 @@ function Sidenavbar() {
     const [subjectID, setSubjectID] = useState('');
     const [isLoadingSubjects, setIsLoadingSubjects] = useState(true);
     const [isLoadingSections, setIsLoadingSections] = useState(false);
-    const navigate = useNavigate();
+
+    
+    const navigate = useNavigate()
 
     useEffect(() => {
         axios
             .get('https://question-bank-backend.onrender.com/user/subjects')
             .then((res) => {
-                setSubjects(res.data.data);
-                setIsLoadingSubjects(false);
+                setSubjects(res.data.data)
+                setIsLoadingSubjects(false)
             })
             .catch((err) => {
-                console.log(err);
-                setIsLoadingSubjects(false);
-            });
-    }, []);
+                console.log(err)
+                setIsLoadingSubjects(false)
+            })
+    }, [])
+
 
     useEffect(() => {
         if (subjectID) {
@@ -50,14 +53,21 @@ function Sidenavbar() {
     const handleSubjectButtonClick = (subjectId) => {
         setSubjectID(subjectId)
         setExploreQuestionToggle(!exploreQuestionToggle);
-    };
+    }
+
+
+    const handleOpenSubjectQuestions = (subjectID) => {
+        navigate(`/starttest?subjectID=${subjectID}`)
+    }
+
+
 
     return (
         <div>
             <div id="container" style={{ marginBottom: '4vh' }}>
                 {isLoadingSubjects ? (
-                    <div className="d-flex justify-content-center mt-5">
-                        <BeatLoader style={{ position: "absolute", left: "48vw", top: "40vh" }} color="#343a40" size={20} />
+                    <div className="d-flex justify-content-center">
+                        <BeatLoader style={{marginTop: "30vh" }} color="#343a40" size={20} />
                     </div>
                 ) : (
                     <>
@@ -93,7 +103,28 @@ function Sidenavbar() {
                                         <BeatLoader color="#343a40" size={10} />
                                     </div>
                                 ) : (
-                                    <ul>
+                                    <ul><li
+                                    style={{
+                                        listStyleType: 'none',
+                                        display: 'flex',
+                                        flexWrap: 'wrap',
+                                        paddingRight: '5vw',
+                                        paddingTop: '3vh',
+                                        textAlign: 'left',
+                                    }}
+                                >
+                                    <Button
+                                        variant='dark'
+                                        onClick={() => handleOpenSubjectQuestions(subjectID)}
+                                        style={{
+                                            border: '1px solid gray',
+                                            textAlign: 'left',
+                                            fontSize: '2.8vmin',
+                                        }}
+                                    >
+                                        Random Questions
+                                    </Button>
+                                </li>
                                         {sections.map((section) => (
                                             <li
                                                 key={section._id}
@@ -107,7 +138,7 @@ function Sidenavbar() {
                                                 }}
                                             >
                                                 <Button
-                                                    className="bg-dark"
+                                                    variant='dark'
                                                     onClick={() => handleOpenSection(section._id)}
                                                     style={{
                                                         border: '1px solid gray',
